@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+
+  let debounce1 = (fn,time1)=>{
+    let timeout = null
+    // return ()=>{
+    //   clearTimeout(timeout)
+    //   timeout = setTimeout(()=>{
+    //       fn.apply(this,arguments)
+    //   },time1)
+    // }
+
+    // return function(a){
+    //   console.log("a:",a)//所以实验得出下面的arguments就是这里传入的a
+    //   clearTimeout(timeout)
+    //     timeout = setTimeout(()=>{
+    //       console.log("arguments:",arguments)
+    //         fn.call(this,arguments)
+    //     },time1)
+    // }
+    return function(){
+         //console.log("a:",a)//所以实验得出下面的arguments就是这里传入的a，
+         //可以在不声明参数的时候传参数，此时就可以使用arguments去使用传入的参数
+      //console.log("arguments11:",arguments)
+      clearTimeout(timeout)
+      timeout = setTimeout(()=>{
+        //console.log("arguments:",arguments)
+        fn.call(this,arguments)
+      },time1)
+    }
+  }
+
+
+ // let f1 = (a)=>{
+ //    console.log("防抖:",a)
+ // }
+  //let debounced1 = debounce1(f1("www"),3000)
+
+// //  let debounced1 = debounce1(f1,3000)
+  let debounced1 = debounce1(()=>{
+    console.log("1111")
+  },3000)
+
+  debounced1()
+  debounced1()
+
+  //debounced1("11aaa")
+ // debounced1("bbb")
+
+
+  // 防抖（一段时间会等，然后带着一起做了）
+  // function debounce(fn, delay){
+  //   let timerId = null
+  //   return function(){
+  //     const context = this
+  //     if(timerId){window.clearTimeout(timerId)}
+  //     timerId = setTimeout(()=>{
+  //       fn.apply(context, arguments)
+  //       timerId = null
+  //     },delay)
+  //   }
+  // }
+  // const debounced = debounce(()=>console.log('hi'),3000)
+  // debounced()
+  // debounced()
+
+
+  // const debounce = (fn, time) => {
+  //   let timeout = null;
+  //   return function() {
+  //     clearTimeout(timeout)
+  //     timeout = setTimeout(() => {
+  //       fn.apply(this, arguments);
+  //     }, time);
+  //   }
+  // };
+  //
+  // const debounced = debounce(()=>console.log('hi'),3000)
+  // debounced()
+  // debounced()
+
+
+  let debounce2 = (fn,delaytime)=>{
+
+    let timeout = null
+
+    return function () {
+
+      clearTimeout(timeout)
+      timeout = setTimeout(()=>{
+        fn.call(this,arguments)
+      },delaytime)
+
+    }
+  }
+
+  let debouncedd = debounce2(()=>{
+    console.log("4000")
+  },4000)
+
+  setTimeout(()=>{
+    debouncedd()
+    console.log("5000")
+  },5000)
+
+  debouncedd()
+
+
+
+  let throttle = (fn,time)=>{
+    let flag = true
+    return function () {
+      if(!flag) return
+      flag = false
+      setTimeout(()=>{
+        fn.call(this,arguments)
+        flag = true
+      },time)
+    }
+  }
+
+  let throttled = throttle(()=>{
+    console.log("throttle")
+  },5000)
+
+  throttled()
+  throttled()
+
+
+
+
+  let throttle2 = (fn,timer)=>{
+
+    let flag = true
+
+    return function () {
+      if(!flag) return
+      flag = false
+      setTimeout(()=>{
+        fn.call(this,arguments)
+      },timer)
+
+    }
+  }
+
+  let throttled2 = throttle(()=>{
+    console.log("throttled2")
+  },10000)
+
+  throttled2()
+  throttled2()
+  throttled2()
+
+
+  // 注意return的函数不要是箭头函数，
+  // setTimeout里若使用箭头函数，要绑定this，
+  // 传递的arguments是return的函数接收的参数
+
+
+  let throttle3 = (fn,time)=>{
+    let flag = true
+
+    return function(){
+      if(!flag) return
+      flag = false
+      setTimeout(()=>{
+        fn.call(this,arguments)
+      },time)
+    }
+  }
+
+  let throttled3 = throttle3(()=>{
+    console.log("throttle33333")
+  },1000)
+
+  throttled3()
+  throttled3()
+
+</script>
+</html>
