@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>双飞翼Document</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing: border-box;
+    }
+    .container{
+      overflow: hidden;
+      /*padding:0 200px 0 300px;*/
+      /*min-width:800px;*/
+    }
+    .container>div{
+      height:50px;
+    }
+    .middle{
+      float:left;
+      width:100%;
+      border:2px solid green;
+
+    }
+    .middleContent{
+      margin:0 200px 0 300px;
+    }
+    .left{
+      width:300px;
+      float: left;
+      border:2px solid red;
+      margin-left:-100%;
+      /*position: relative;*/
+      /*left:-300px;*/
+
+    }
+    .right{
+      width:200px;
+      float: left;
+      border:2px solid black;
+      margin-left:-200px;
+      /*position: relative;*/
+      /*left:200px;*/
+    }
+  </style>
+</head>
+<body>
+<!--圣杯布局-->
+<div class="container">
+  <div class="middle">
+    <div class="middleContent">MIDDLE</div>
+  </div>
+  <div class="left">LEFT</div>
+  <div class="right">RIGHT</div>
+</div>
+</body>
+</html>

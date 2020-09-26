@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>左栏固定宽度，右栏自适应之绝对定位法</title>
+  <style type="text/css">
+    header{
+      height:50px;
+      background-color:#3FF;
+    }
+    #left{
+      height:300px;
+      background-color:#9F3;
+    }
+    #right{
+      float: left;
+      width: 230px;
+      height: 400px;
+      background: #ccc;
+    }
+    footer{
+      clear:both;      /*关键点1*/    height:50px;
+      background-color:#3FF;
+    }
+  </style>
+</head>
+<body>
+<header>头部</header>
+<main>
+  <div id="right">右侧区域</div>
+  <div id="left">左侧区域</div>    /*关键点2，*位置的顺序很重要，如果调换左侧区域和右侧区域的顺序，则右侧区域浮动时，没有漂到left的右侧，而是在left下方的右侧*/
+</main>
+<footer>尾部</footer>
+</body>
+</html>
