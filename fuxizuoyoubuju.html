@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>复习利用bfc去做左右布局，左边固定宽度，右边自适应</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing: border-box;
+    }
+    .clearfix::after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+    div.container{
+      /*margin:auto;*/
+      border:2px solid black;
+      /*padding:0 300px;*/
+      /*min-width:904px;*/
+      /*min-width:900px;*/
+
+      overflow: hidden;
+    }
+
+    div.left{
+      float: left;
+      border:5px solid red;
+      width:200px;
+
+    }
+
+    div.right{
+      border:5px solid blue;
+      /*float: right;*/
+      /*margin-left:-300px;*/
+      /*left:300px*/
+    overflow: hidden;
+      height:60px;
+    }
+
+
+    div.container1{
+      margin-top:30px;
+      /*margin:auto;*/
+      border:2px solid black;
+      /*padding:0 300px;*/
+      /*min-width:904px;*/
+      /*min-width:900px;*/
+
+      overflow: hidden;
+    }
+
+    div.left1{
+      /*float: left;*/
+      border:5px solid red;
+      width:200px;
+      position:absolute;
+      left:0;
+      /*top:0;*/
+height:60px;
+    }
+
+    div.right1{
+      border:5px solid blue;
+      /*float: right;*/
+      /*margin-left:-300px;*/
+      /*left:300px*/
+      /*overflow: hidden;*/
+      margin-left:200px;
+      height:40px;
+    }
+
+  </style>
+</head>
+<body>
+    <div class="container clearfix">
+<!--<div class="container ">-->
+
+  <div class="aside left">left</div>
+  <div class="aside right">right</div>
+</div>
+
+
+    <div class="container1 clearfix">
+      <!--<div class="container ">-->
+
+      <div class="aside left1">left</div>
+      <div class="aside right1">right</div>
+    </div>
+</body>
+</html>
